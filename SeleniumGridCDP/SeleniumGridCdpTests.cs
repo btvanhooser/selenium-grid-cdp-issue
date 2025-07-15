@@ -16,7 +16,8 @@ public class SeleniumGridCdpTests
     {
         var options = new ChromeOptions
         {
-            AcceptInsecureCertificates = true
+            AcceptInsecureCertificates = true,
+            UseWebSocketUrl = true
         };
         options.AddArgument("--remote-debugging-port=9222");
 
