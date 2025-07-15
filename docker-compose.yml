@@ -1,0 +1,22 @@
+services:
+  chrome:
+    image: selenium/node-chrome:4.34.0-20250707
+    platform: linux/amd64
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_VNC_NO_PASSWORD=true
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_NODE_GRID_URL=http://selenium-hub:4444/
+      - SE_NODE_ENABLE_CDP=true
+    ports:
+      - "5555:5555"
+
+  selenium-hub:
+    image: selenium/hub:4.34.0-20250707
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
